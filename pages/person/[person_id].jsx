@@ -35,13 +35,13 @@ export default function PersonId({ person }) {
     <>
       <Head>
         <title>{person.name} Details</title>
-        <meta name='description' content='Person information'/>
+        <meta name='description' content='Person information' />
       </Head>
       <Box maxW='container.xl' mx='auto' py='4rem'>
         <Flex
           justify='space-between'
-          px={4}
-          gap={10}
+          px={{ base: '4', md: '10' }}
+          gap='3rem'
           direction={{ base: 'column', md: 'row' }}
         >
           <Box>
@@ -147,7 +147,7 @@ export default function PersonId({ person }) {
                   </Button>
                 )}
               </Box>
-              <Box w={{ base: '100%', sm: '100%', md: '55vw', lg: '68vw' }}>
+              <Box w={{ base: '100%', sm: '100%', md: '50vw', lg: '60vw', xl:'67vw' }}>
                 <Text fontWeight='bold'>Known for</Text>
                 <Flex align='center' py={4}>
                   <Flex

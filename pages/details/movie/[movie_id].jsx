@@ -7,6 +7,7 @@ import {
   Avatar,
   HStack,
   VStack,
+  Stack,
   Icon,
   Img,
   Button,
@@ -100,9 +101,9 @@ export default function MovieId({ movie }) {
               />
             </Box>
             <Box maxW='container.xl' mx='auto' mt='4rem'>
-              <Flex
-                gap={10}
-                px={4}
+              <Stack
+                spacing='2.5rem'
+                px={{ base: '4', md: '10' }}
                 pos='absolute'
                 top='10%'
                 zIndex={2}
@@ -199,20 +200,20 @@ export default function MovieId({ movie }) {
                     </Flex>
                   </VStack>
                 </Box>
-              </Flex>
+              </Stack>
             </Box>
           </Box>
         </Box>
       </Box>
       <Flex
-        p={4}
-        gap={20}
+        p={{ base: '4', md: '10' }}
+        gap='3rem'
         mt='2rem'
         maxW='container.xl'
         mx='auto'
         direction={{ base: 'column', md: 'row' }}
       >
-        <Box w={{ base: 'full', md: '500px', lg: '700px', xl: '800px' }}>
+        <Box w={{ base: 'full', md: '60vw', lg: '67vw', xl: '75vw' }}>
           <Box>
             <Heading as='h2' size='sm' mb={4}>
               Casts

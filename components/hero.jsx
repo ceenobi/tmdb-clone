@@ -34,7 +34,7 @@ export default function Hero({ backdrop }) {
             h='300px'
             pos='absolute'
             top={['10%', '20%']}
-            px={4}
+            px={{ base: '4', md: '10' }}
             zIndex={4}
           >
             <Box textAlign='start' color='whiteAlpha.900'>

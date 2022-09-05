@@ -7,6 +7,7 @@ import {
   Avatar,
   HStack,
   VStack,
+  Stack,
   Icon,
   Img,
   Button,
@@ -33,7 +34,7 @@ export default function TvId({ tv }) {
   const [user] = useAuthState(auth)
   const [handleToast] = useToastHook()
   const movieID = doc(db, 'users', `${user?.email}`)
-  
+
   if (!tv) {
     return (
       <Box>
@@ -47,7 +48,9 @@ export default function TvId({ tv }) {
   const credits = tv?.credits?.crew?.filter(
     (item) => item.job === 'Executive Producer'
   )
-  const writer = tv?.credits?.crew?.filter((item) => item.department === 'Writing')
+  const writer = tv?.credits?.crew?.filter(
+    (item) => item.department === 'Writing'
+  )
 
   const savedShow = async () => {
     if (user?.email) {
@@ -96,14 +99,15 @@ export default function TvId({ tv }) {
               />
             </Box>
             <Box maxW='container.xl' mx='auto'>
-              <Flex
-                gap={10}
-                px={4}
+              <Stack
+                spacing='2.5rem'
+                px={{ base: '4', md: '10' }}
                 pos='absolute'
                 top='10%'
                 zIndex={2}
                 direction={{ base: 'column', md: 'row' }}
                 align='center'
+                
               >
                 <Flex
                   mr='auto'
@@ -139,7 +143,7 @@ export default function TvId({ tv }) {
                     <Text mt={1}>*</Text>
                     <Text>{tv?.episode_run_time}mins</Text>
                   </Flex>
-                  <VStack spacing={4} mt={5} align='start'>
+                  <VStack spacing={2} mt={5} align='start'>
                     <Flex
                       gap={4}
                       align='center'
@@ -195,48 +199,56 @@ export default function TvId({ tv }) {
                     </Flex>
                   </VStack>
                 </Box>
-              </Flex>
+              </Stack>
             </Box>
           </Box>
         </Box>
       </Box>
       <Flex
-        p={4}
-        gap={20}
+        p={{ base: '4', md: '10' }}
+        gap='3rem'
         mt='2rem'
         maxW='container.xl'
         mx='auto'
         direction={{ base: 'column', md: 'row' }}
       >
-        <Box w={{ base: 'full', md: '500px', lg: '700px', xl: '800px' }}>
+        <Box w={{ base: 'full', md: '60vw', lg: '67vw', xl: '75vw' }}>
           <Box>
             <Heading as='h2' size='sm' mb={4}>
               Casts
             </Heading>
             <Flex align='center'>
-              <Flex
-                overflowX='auto'
-                flexWrap='nowrap'
-                scroll='smooth'
-                scrollbar='hide'
-              >
-                {tv?.credits?.cast?.map((item, i) => (
-                  <Box key={i} align='center' cursor='pointer' mr='2rem'>
-                    <NextLink href={`/person/${item.id}`} passHref>
-                      <Avatar
-                        src={`https://image.tmdb.org/t/p/original/${item?.profile_path}`}
-                        size='lg'
-                        name={item.name}
-                        mx='auto'
-                      />
-                    </NextLink>
-                    <Text fontWeight='bold'>{item?.name}</Text>
-                    <Text fontSize='sm'>
-                      {item?.character}
-                    </Text>
-                  </Box>
-                ))}
-              </Flex>
+              {tv?.credits?.cast?.length > 0 ? (
+                <Flex
+                  overflowX='auto'
+                  flexWrap='nowrap'
+                  scroll='smooth'
+                  scrollbar='hide'
+                >
+                  {tv?.credits?.cast?.map((item, i) => (
+                    <Box key={i} align='center' cursor='pointer' mr='2rem'>
+                      <NextLink href={`/person/${item.id}`} passHref>
+                        <Avatar
+                          src={`https://image.tmdb.org/t/p/original/${item?.profile_path}`}
+                          size='lg'
+                          name={item.name}
+                          mx='auto'
+                        />
+                      </NextLink>
+                      <Text fontWeight='bold'>{item?.name}</Text>
+                      <Text fontSize='sm'>{item?.character}</Text>
+                    </Box>
+                  ))}
+                </Flex>
+              ) : (
+                <Text>
+                  Casts for{' '}
+                  <Box as='span' fontWeight='bold'>
+                    {`"${tv.name}"`}
+                  </Box>{' '}
+                  is unavailable.
+                </Text>
+              )}
             </Flex>
           </Box>
           <Box mt={8}>
@@ -359,7 +371,7 @@ export default function TvId({ tv }) {
               <Text>{tv?.status}</Text>
             </Box>
             <Box>
-              <Text fontWeight='bold'>Network</Text>
+              <Text fontWeight='bold' mb={2}>Network</Text>
               <Text>
                 {tv?.networks?.map((item) => (
                   <Img

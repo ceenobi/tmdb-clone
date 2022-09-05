@@ -15,14 +15,14 @@ const Search = (props) => {
   const stopLoading = () => setIsLoading(false)
   const router = useRouter()
 
-  let keyword = router.query['query'] || ''
+  let keyword = router.query['query']
 
   const filteredData = props.search.filter((res) => {
-     const filter = res.title === keyword
+     const filter = res.title || res.name === keyword
      if (keyword === '') {
        return res
      } else {
-       return res.title || filter
+       return res.title || res.name || filter
      }
   })
 
@@ -36,8 +36,8 @@ const Search = (props) => {
     }
   }, [])
 
-  const movieTotal = props.search?.filter((item) => item.media_type === 'movie')
-  const tvTotal = props.search?.filter((item) => item.media_type === 'tv')
+  const movieTotal = filteredData?.filter((item) => item.media_type === 'movie')
+  const tvTotal = filteredData?.filter((item) => item.media_type === 'tv')
 
   const arrayOfMovieKeys = Object.keys(movieTotal)
   const arrayOfMovieData = Object.keys(movieTotal).map((key) => movieTotal[key])
@@ -58,21 +58,21 @@ const Search = (props) => {
   })
 
   const filterByMovie = () => {
-    var updatedList = [...props.search]
+    var updatedList = [...filteredData]
     updatedList = updatedList.filter((item) => {
       return item.media_type === 'movie'
     })
     setFilteredList(updatedList)
   }
   const filterByTv = () => {
-    var updatedList = [...props.search]
+    var updatedList = [...filteredData]
     updatedList = updatedList.filter((item) => {
       return item.media_type === 'tv'
     })
     setFilteredList(updatedList)
   }
 
-  if (keyword && filteredList.length === 0) {
+  if (keyword && filteredList?.length === 0) {
     return (
       <Flex justify='center' py='5rem' m='auto'>
         <Text as='h2' fontSize='lg'>
@@ -124,7 +124,7 @@ const Search = (props) => {
         <Box maxW='container.xl' mx='auto' py='2rem'>
           <Flex
             justify='space-between'
-            px={4}
+            px={{ base: '4', md: '10' }}
             gap={10}
             direction={{ base: 'column', md: 'row' }}
           >
@@ -152,14 +152,24 @@ const Search = (props) => {
                 fontSize='lg'
                 direction={{ base: 'row', md: 'column' }}
               >
-                <Flex gap={3} cursor='pointer' align='center'>
-                  <Text onClick={filterByMovie}>Movies</Text>
+                <Flex
+                  gap={3}
+                  cursor='pointer'
+                  align='center'
+                  onClick={filterByMovie}
+                >
+                  <Text>Movies</Text>
                   <Button variant='solid' size='sm'>
                     {formattedMovieArray.length}
                   </Button>
                 </Flex>
-                <Flex gap={3} cursor='pointer' align='center'>
-                  <Text onClick={filterByTv}>Tv</Text>
+                <Flex
+                  gap={3}
+                  cursor='pointer'
+                  align='center'
+                  onClick={filterByTv}
+                >
+                  <Text>Tv</Text>
                   <Button variant='solid' size='sm'>
                     {formattedTvArray.length}
                   </Button>

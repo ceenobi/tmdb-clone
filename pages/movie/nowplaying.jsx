@@ -104,13 +104,12 @@ const NowPlaying = (props) => {
         <title>Now Playing Movies</title>
         <meta name='description' content='List of now playing movies' />
       </Head>
-      <Box maxW='container.xl' mx='auto' py='2rem'>
+      <Box maxW='container.xl' mx='auto' py='2rem' px={{ base: '4', lg: '10' }}>
         <Flex
           justify='space-between'
           direction={{ base: 'column', md: 'row' }}
           align='center'
           mb={4}
-          px={4}
         >
           <Heading as='h2' size={{ base: 'sm', md: 'md' }} mb={3} px={4}>
             Now playing movies

@@ -73,7 +73,7 @@ export default function Profile() {
               pos='absolute'
               top='0'
               left='0'
-              px={4}
+              px={{ base: '4', md: '10' }}
               zIndex={4}
               w={{ base: 'full', md: '80w' }}
               m='auto'
@@ -94,7 +94,12 @@ export default function Profile() {
             </Flex>
           </Box>
         </Box>
-        <Box py='2rem' maxW='container.xl' m='auto' px={4}>
+        <Box
+          py='2rem'
+          maxW='container.xl'
+          m='auto'
+          px={{ base: '4', md: '10' }}
+        >
           <Text fontSize='xl' fontWeight='bold'>
             Your watchlist
           </Text>

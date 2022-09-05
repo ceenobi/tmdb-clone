@@ -104,18 +104,17 @@ const Popular = (props) => {
         <title>Popular Movies</title>
         <meta name='description' content='List of popuplar movies' />
       </Head>
-      <Box maxW='container.xl' mx='auto' py='2rem'>
+      <Box maxW='container.xl' mx='auto' py='2rem' px={{ base: '4', lg: '10' }}>
         <Flex
           justify='space-between'
           direction={{ base: 'column', md: 'row' }}
           align='center'
           mb={4}
-          px={4}
         >
           <Heading as='h2' size={{ base: 'sm', md: 'md' }} mb={3}>
             Popular movies
           </Heading>
-          <Box w={{ base: '100%', md: '250px' }}>
+          <Box w={{ base: '100%', md: '220px' }}>
             Sort results by:
             <Select
               rounded='none'

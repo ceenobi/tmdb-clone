@@ -1,9 +1,13 @@
 import { Box, Flex, ScaleFade, Text, VStack } from '@chakra-ui/react'
 import Link from 'next/link'
+import { useAuthState } from 'react-firebase-hooks/auth'
 
 import { AccordionSidebar } from '../../components'
+import { AuthService } from '../../lib/context'
+import { auth } from '../../firebase'
 
 export default function Sidebar({ showSide, setShowSide }) {
+  const [user] = useAuthState(auth)
   const navigateToPath = () => setShowSide(!showSide)
 
   const outerBoxStyles = {
@@ -28,18 +32,22 @@ export default function Sidebar({ showSide, setShowSide }) {
         <ScaleFade initialScale={0.9} in='true'>
           <Flex h='full' alignItems='center' direction='column' mt={4}>
             <AccordionSidebar onClose={navigateToPath} />
-            <VStack
-              spacing={3}
-              mt='2rem'
-              mr='auto'
-              px={3}
-              fontWeight='bold'
-              align='left'
-            >
-              <Link href='/getstarted'>
-                <Text onClick={() => setShowSide(!showSide)}>Join Tubine</Text>
-              </Link>
-            </VStack>
+            {!user && (
+              <VStack
+                spacing={3}
+                mt='2rem'
+                mr='auto'
+                px={3}
+                fontWeight='bold'
+                align='left'
+              >
+                <Link href='/getstarted'>
+                  <Text onClick={() => setShowSide(!showSide)}>
+                    Join Tubine
+                  </Text>
+                </Link>
+              </VStack>
+            )}
           </Flex>
         </ScaleFade>
       </Box>
