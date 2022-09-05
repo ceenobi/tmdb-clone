@@ -290,7 +290,7 @@ export default function TvId({ tv }) {
                   <Flex
                     mb={4}
                     p={4}
-                    gap={6}
+                    gap='20px'
                     key={id}
                     direction={{ base: 'column', md: 'row' }}
                   >
@@ -321,33 +321,6 @@ export default function TvId({ tv }) {
             ) : (
               <Text>
                 No reviews for{' '}
-                <Box as='span' fontWeight='bold'>
-                  {`"${tv.name}"`}
-                </Box>{' '}
-                show yet.
-              </Text>
-            )}
-          </Box>
-          <Box mt={8}>
-            <Heading as='h2' size='sm' mb={4}>
-              Recommendations
-            </Heading>
-            {tv?.recommendations?.results.length > 0 ? (
-              <Flex align='center'>
-                <Flex
-                  overflowX='auto'
-                  flexWrap='nowrap'
-                  scroll='smooth'
-                  scrollbar='hide'
-                >
-                  {tv?.recommendations?.results?.map((item, id) => (
-                    <PosterBox item={item} key={id} />
-                  ))}
-                </Flex>
-              </Flex>
-            ) : (
-              <Text>
-                No recommendations for{' '}
                 <Box as='span' fontWeight='bold'>
                   {`"${tv.name}"`}
                 </Box>{' '}
@@ -399,6 +372,35 @@ export default function TvId({ tv }) {
           </VStack>
         </Box>
       </Stack>
+      <Box maxW='container.xl' p={{ base: '4', md: '10' }} mx='auto'>
+        <Box mt={8}>
+          <Heading as='h2' size='sm' mb={4}>
+            Recommendations
+          </Heading>
+          {tv?.recommendations?.results.length > 0 ? (
+            <Flex align='center'>
+              <Flex
+                overflowX='auto'
+                flexWrap='nowrap'
+                scroll='smooth'
+                scrollbar='hide'
+              >
+                {tv?.recommendations?.results?.map((item, id) => (
+                  <PosterBox item={item} key={id} />
+                ))}
+              </Flex>
+            </Flex>
+          ) : (
+            <Text>
+              No recommendations for{' '}
+              <Box as='span' fontWeight='bold'>
+                {`"${tv.name}"`}
+              </Box>{' '}
+              show yet.
+            </Text>
+          )}
+        </Box>
+      </Box>
     </>
   )
 }

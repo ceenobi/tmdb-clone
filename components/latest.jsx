@@ -20,7 +20,7 @@ export default function Latest({ upcoming, onAir }) {
         <Heading as='h2' size={{ base: 'sm', md: 'md' }}>
           Trending
         </Heading>
-        <Stack spacing={3} direction='row' align='center'>
+        <Stack spacing='15px' direction='row' align='center'>
           <Button
             fontWeight='bold'
             onClick={() => setActiveBtn(true)}

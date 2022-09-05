@@ -3,13 +3,7 @@ import Link from 'next/link'
 
 export default function PosterBoxMobile({ item }) {
   return (
-    <Flex
-      gap={2}
-      rounded='xl'
-      w='90vw'
-      shadow='lg'
-      mb={3}
-    >
+    <Flex gap={2} rounded='xl' w='90vw' shadow='lg' mb={3}>
       <Box w='120px'>
         {item.title ? (
           <Link href={`/details/movie/${item.id}`}>
@@ -37,9 +31,19 @@ export default function PosterBoxMobile({ item }) {
       </Box>
       <VStack spacing={2} align='start' p={2}>
         <Box>
-          <Text fontWeight='bold' _hover={{ color: 'blue.200' }}>
-            {item?.title || item?.name}
-          </Text>
+          {item.title ? (
+            <Link href={`/details/movie/${item.id}`} passHref>
+              <Text fontWeight='bold' _hover={{ color: 'blue.200' }}>
+                {item?.title}
+              </Text>
+            </Link>
+          ) : (
+            <Link href={`/details/movie/${item.id}`} passHref>
+              <Text fontWeight='bold' _hover={{ color: 'blue.200' }}>
+                {item?.name}
+              </Text>
+            </Link>
+          )}
           <Text>
             {item?.release_date?.slice(0, 4) ||
               item?.first_air_date?.slice(0, 4)}

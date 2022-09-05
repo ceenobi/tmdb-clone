@@ -119,7 +119,10 @@ export default function MovieId({ movie }) {
                     height='100%'
                   />
                 </Box>
-                <Box color='#fff' w={{ base: 'full', md: '50%', lg:'55%', xl:'70%' }}>
+                <Box
+                  color='#fff'
+                  w={{ base: 'full', md: '50%', lg: '55%', xl: '70%' }}
+                >
                   <HStack spacing={2} justify={{ base: 'center', md: 'start' }}>
                     <Heading as='h2' size={{ base: 'sm', md: 'md', lg: 'lg' }}>
                       {movie?.title}
@@ -250,7 +253,7 @@ export default function MovieId({ movie }) {
                   <Flex
                     mb={4}
                     p={4}
-                    gap={6}
+                    gap='20px'
                     key={id}
                     direction={{ base: 'column', md: 'row' }}
                   >
@@ -288,35 +291,6 @@ export default function MovieId({ movie }) {
               </Text>
             )}
           </Box>
-          <Box mt={8}>
-            <Heading as='h2' size='sm' mb={4}>
-              Recommendations
-            </Heading>
-            <Flex align='center'>
-              {movie?.recommendations?.results.length > 0 ? (
-                <>
-                  <Flex
-                    overflowX='auto'
-                    flexWrap='nowrap'
-                    scroll='smooth'
-                    scrollbar='hide'
-                  >
-                    {movie?.recommendations?.results?.map((item, id) => (
-                      <PosterBox item={item} key={id} />
-                    ))}
-                  </Flex>
-                </>
-              ) : (
-                <Text>
-                  No recommendations for{' '}
-                  <Box as='span' fontWeight='bold'>
-                    {`"${movie.title}"`}
-                  </Box>{' '}
-                  at the moment.
-                </Text>
-              )}
-            </Flex>
-          </Box>
         </Box>
         <Box w='full' align='start'>
           <Heading as='h2' size='sm' mb={4}>
@@ -344,6 +318,37 @@ export default function MovieId({ movie }) {
           </VStack>
         </Box>
       </Stack>
+      <Box maxW='container.xl' p={{ base: '4', md: '10' }} mx='auto'>
+        <Box mt={8}>
+          <Heading as='h2' size='sm' mb={4}>
+            Recommendations
+          </Heading>
+          <Flex align='center'>
+            {movie?.recommendations?.results.length > 0 ? (
+              <>
+                <Flex
+                  overflowX='auto'
+                  flexWrap='nowrap'
+                  scroll='smooth'
+                  scrollbar='hide'
+                >
+                  {movie?.recommendations?.results?.map((item, id) => (
+                    <PosterBox item={item} key={id} />
+                  ))}
+                </Flex>
+              </>
+            ) : (
+              <Text>
+                No recommendations for{' '}
+                <Box as='span' fontWeight='bold'>
+                  {`"${movie.title}"`}
+                </Box>{' '}
+                at the moment.
+              </Text>
+            )}
+          </Flex>
+        </Box>
+      </Box>
     </>
   )
 }

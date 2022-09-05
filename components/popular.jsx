@@ -17,11 +17,11 @@ export default function Popular({ trending, trendShow }) {
 
   return (
     <Box maxW='container.xl' m='auto' px={{ base: '4', md: '10' }} mt='2rem'>
-      <Flex gap={{ base: '3', md: '4' }} align='center'>
+      <Flex gap={4} align='center'>
         <Heading as='h2' size={{ base: 'sm', md: 'md' }}>
           {"What's"} Popular
         </Heading>
-        <Stack spacing={3} direction='row' align='center'>
+        <Stack spacing='15px' direction='row' align='center'>
           <Button
             fontWeight='bold'
             onClick={() => setActiveBtn(true)}
