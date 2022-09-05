@@ -22,7 +22,7 @@ import { AiOutlineUnorderedList } from 'react-icons/ai'
 import { VscTasklist } from 'react-icons/vsc'
 
 import { getTvDetails } from '../../api/tubine.server'
-import { PosterBox } from '../../../components'
+import { PosterBox, Layout } from '../../../components'
 import { AuthService } from '../../../lib/context'
 import { useToastHook } from '../../../hooks/useToast'
 
@@ -107,7 +107,6 @@ export default function TvId({ tv }) {
                 zIndex={2}
                 direction={{ base: 'column', md: 'row' }}
                 align='center'
-                
               >
                 <Flex
                   mr='auto'
@@ -121,7 +120,10 @@ export default function TvId({ tv }) {
                     height='100%'
                   />
                 </Flex>
-                <Box color='#fff' w={{ base: '90vw', md: '55vw', lg: '60vw' }}>
+                <Box
+                  color='#fff'
+                  w={{ base: 'full', md: '80%', lg: '65%', xl: '70%' }}
+                >
                   <HStack spacing={2} justify={{ base: 'center', md: 'start' }}>
                     <Heading as='h2' size={{ base: 'sm', md: 'md', lg: 'lg' }}>
                       {tv?.name}
@@ -204,15 +206,15 @@ export default function TvId({ tv }) {
           </Box>
         </Box>
       </Box>
-      <Flex
+      <Stack
         p={{ base: '4', md: '10' }}
-        gap='3rem'
+        spacing='4rem'
         mt='2rem'
         maxW='container.xl'
         mx='auto'
         direction={{ base: 'column', md: 'row' }}
       >
-        <Box w={{ base: 'full', md: '60vw', lg: '67vw', xl: '75vw' }}>
+        <Box w={{ base: 'full', md: '60%', lg: '65%', xl: '75%' }}>
           <Box>
             <Heading as='h2' size='sm' mb={4}>
               Casts
@@ -286,7 +288,6 @@ export default function TvId({ tv }) {
               <Box rounded='xl' shadow='lg'>
                 {tv?.reviews?.results?.slice(0, 3).map((item, id) => (
                   <Flex
-                    justify='space-between'
                     mb={4}
                     p={4}
                     gap={6}
@@ -355,7 +356,7 @@ export default function TvId({ tv }) {
             )}
           </Box>
         </Box>
-        <Box w={{ base: 'full', md: 'full' }} align='start'>
+        <Box w='full' align='start'>
           <Heading as='h2' size='sm' mb={4}>
             Additional
           </Heading>
@@ -371,7 +372,9 @@ export default function TvId({ tv }) {
               <Text>{tv?.status}</Text>
             </Box>
             <Box>
-              <Text fontWeight='bold' mb={2}>Network</Text>
+              <Text fontWeight='bold' mb={2}>
+                Network
+              </Text>
               <Text>
                 {tv?.networks?.map((item) => (
                   <Img
@@ -395,10 +398,12 @@ export default function TvId({ tv }) {
             </Box>
           </VStack>
         </Box>
-      </Flex>
+      </Stack>
     </>
   )
 }
+
+TvId.Layout = Layout
 
 export async function getServerSideProps(context) {
   try {

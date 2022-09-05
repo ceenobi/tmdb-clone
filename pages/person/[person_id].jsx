@@ -6,10 +6,11 @@ import {
   Text,
   HStack,
   VStack,
+  Stack,
   Icon,
   Image,
   Button,
-  Link
+  Link,
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import Head from 'next/head'
@@ -38,10 +39,9 @@ export default function PersonId({ person }) {
         <meta name='description' content='Person information' />
       </Head>
       <Box maxW='container.xl' mx='auto' py='4rem'>
-        <Flex
-          justify='space-between'
+        <Stack
           px={{ base: '4', md: '10' }}
-          gap='3rem'
+          spacing='3rem'
           direction={{ base: 'column', md: 'row' }}
         >
           <Box>
@@ -119,7 +119,7 @@ export default function PersonId({ person }) {
               </VStack>
             </Box>
           </Box>
-          <Box>
+          <Box w={{ base: 'full', md: '60%', lg: '70%', xl: '75%' }}>
             <Flex direction='column' gap={8} align='start'>
               <Heading
                 as='h2'
@@ -147,7 +147,9 @@ export default function PersonId({ person }) {
                   </Button>
                 )}
               </Box>
-              <Box w={{ base: '100%', sm: '100%', md: '50vw', lg: '60vw', xl:'67vw' }}>
+              <Box
+               w='full'
+              >
                 <Text fontWeight='bold'>Known for</Text>
                 <Flex align='center' py={4}>
                   <Flex
@@ -195,7 +197,7 @@ export default function PersonId({ person }) {
               </Box>
             </Flex>
           </Box>
-        </Flex>
+        </Stack>
       </Box>
     </>
   )
