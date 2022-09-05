@@ -11,6 +11,7 @@ import {
   Img,
   Button,
   Link,
+  Spacer
 } from '@chakra-ui/react'
 import { AiFillStar } from 'react-icons/ai'
 import { FiLink } from 'react-icons/fi'
@@ -100,16 +101,14 @@ export default function MovieId({ movie }) {
             </Box>
             <Box maxW='container.xl' mx='auto' mt='4rem'>
               <Flex
-                justify='space-between'
-                gap={{ base: 10, md: 20 }}
+                gap={10}
                 px={4}
                 pos='absolute'
                 top='10%'
                 zIndex={2}
                 direction={{ base: 'column', md: 'row' }}
               >
-                <Flex
-                  mr='auto'
+                <Box
                   width={{ base: '140px', md: '250px', lg: '300px' }}
                   height={{ base: '150px', md: '300px', lg: '400px' }}
                 >
@@ -119,8 +118,9 @@ export default function MovieId({ movie }) {
                     width='100%'
                     height='100%'
                   />
-                </Flex>
-                <Box color='#fff' w={{ base: '90vw', md: '53vw', lg: '60vw' }}>
+                </Box>
+                <Spacer />
+                <Box color='#fff' w={{ base: '90vw', md: '55vw', lg: '60vw' }}>
                   <HStack spacing={2} justify={{ base: 'center', md: 'start' }}>
                     <Heading as='h2' size={{ base: 'sm', md: 'md', lg: 'lg' }}>
                       {movie?.title}
@@ -132,7 +132,7 @@ export default function MovieId({ movie }) {
                       ({movie?.release_date?.slice(0, 4)})
                     </Text>
                   </HStack>
-                  <Flex gap={2} flexWrap='wrap' mt={3}>
+                  <Flex gap={3} flexWrap='wrap' mt={3}>
                     <Text>{movie?.release_date}</Text>
                     <Text>{movie?.production_countries?.[0]?.iso_3166_1}</Text>
                     <Text mt={1}>*</Text>
@@ -144,14 +144,15 @@ export default function MovieId({ movie }) {
                   </Flex>
                   <VStack spacing={4} mt={5} align='start'>
                     <Flex
-                      gap={4}
+                      gap={8}
                       align='center'
                       justify={{ base: 'center', md: 'start' }}
+                      flexWrap='wrap'
                     >
                       <Flex gap={1} align='center'>
                         <Icon as={AiFillStar} color='yellow' fontSize='25px' />
                         <Text fontSize='20px'>
-                          {movie?.vote_average.toFixed(2)}/10
+                          {movie?.vote_average?.toFixed(2)}/10
                         </Text>
                       </Flex>
                       <Box onClick={savedShow}>
@@ -179,7 +180,7 @@ export default function MovieId({ movie }) {
                       </Text>
                     </Box>
                     <Flex justify='space-between' w='full' flexWrap='wrap'>
-                      {credits.slice(0, 2).map((item, index) => (
+                      {credits?.slice(0, 2).map((item, index) => (
                         <VStack spacing={2} key={index} align='start'>
                           <Text mt={2} fontWeight='bold'>
                             {item.name}
@@ -187,7 +188,7 @@ export default function MovieId({ movie }) {
                           <Text mt={2}>{item.job}</Text>
                         </VStack>
                       ))}
-                      {writer.slice(0, 2).map((item, index) => (
+                      {writer?.slice(0, 2).map((item, index) => (
                         <VStack spacing={2} key={index} align='start'>
                           <Text mt={2} fontWeight='bold'>
                             {item.name}
@@ -205,8 +206,7 @@ export default function MovieId({ movie }) {
       </Box>
       <Flex
         p={4}
-        justify='space-between'
-        gap={[10, 20]}
+        gap={20}
         mt='2rem'
         maxW='container.xl'
         mx='auto'
@@ -235,9 +235,7 @@ export default function MovieId({ movie }) {
                       />
                     </NextLink>
                     <Text fontWeight='bold'>{item?.name}</Text>
-                    <Text fontSize='sm'>
-                      {item?.character}
-                    </Text>
+                    <Text fontSize='sm'>{item?.character}</Text>
                   </Box>
                 ))}
               </Flex>
@@ -261,7 +259,7 @@ export default function MovieId({ movie }) {
                     <Avatar
                       src={`https://image.tmdb.org/t/p/original/${item?.author_details.avatar_path}`}
                       size='lg'
-                      name={item?.author_details.name}
+                      name={item?.author_details?.name}
                     />
                     <Box>
                       <Text fontWeight='bold'>{item?.author}</Text>
@@ -339,11 +337,11 @@ export default function MovieId({ movie }) {
             </Box>
             <Box>
               <Text fontWeight='bold'>Budget</Text>
-              <Text>&#36;{movie?.budget.toFixed(2)}</Text>
+              <Text>&#36;{movie?.budget?.toFixed(2)}</Text>
             </Box>
             <Box>
               <Text fontWeight='bold'>Revenue</Text>
-              <Text>&#36;{movie?.revenue.toFixed(2)}</Text>
+              <Text>&#36;{movie?.revenue?.toFixed(2)}</Text>
             </Box>
           </VStack>
         </Box>

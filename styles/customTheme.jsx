@@ -44,7 +44,7 @@ const theme = extendTheme(
         },
         '.pagination': {
           display: 'flex',
-          gap: '15px',
+          gap: '20px',
           p: '5px',
           listStyleType: 'none',
         },

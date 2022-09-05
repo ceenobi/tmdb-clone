@@ -101,7 +101,6 @@ export default function Navbar() {
         justify='space-between'
         h='16'
         px={4}
-        gap={10}
       >
         <Box
           onClick={() => setShowSide(!showSide)}
@@ -123,7 +122,7 @@ export default function Navbar() {
             />
           )}
         </Box>
-        <NextLink href='/' passHref>
+        {/* <NextLink href='/' passHref>
           <Heading
             size={{ base: 'md', md: 'sm', lg: 'lg' }}
             justify='flex-start'
@@ -131,129 +130,134 @@ export default function Navbar() {
           >
             TUBINE DB
           </Heading>
-        </NextLink>
-        <HStack
-          spacing={4}
-          display={{ base: 'none', md: 'flex' }}
-          mr='2rem'
-          flex='1'
-        >
-          {navItems.movies.map((item, index) => (
-            <Menu key={index} isLazy size='md'>
-              <MenuButton
-                as={Button}
-                rightIcon={<RiArrowDropDownLine />}
-                variant='unstyled'
-              >
-                {item.label}
-              </MenuButton>
-              <MenuList sx={menuColor}>
-                {item.href.map((it, index) => (
-                  <MenuItem key={index}>
-                    <NextLink href={`/movie/${it.linkA}`} passHref>
-                      <Link>{it.labelA}</Link>
-                    </NextLink>
-                    <NextLink href={`/movie/${it.linkB}`} passHref>
-                      <Link>{it.labelB}</Link>
-                    </NextLink>
-                  </MenuItem>
-                ))}
-              </MenuList>
-            </Menu>
-          ))}
-          {navItems.shows.map((item, index) => (
-            <Menu key={index} isLazy size='md'>
-              <MenuButton
-                as={Button}
-                rightIcon={<RiArrowDropDownLine />}
-                variant='unstyled'
-              >
-                {item.label}
-              </MenuButton>
-              <MenuList sx={menuColor}>
-                {item.href.map((it, index) => (
-                  <MenuItem key={index}>
-                    <NextLink href={`/tv/${it.linkA}`} passHref>
-                      <Link>{it.labelA}</Link>
-                    </NextLink>
-                    <NextLink href={`/tv/${it.linkB}`} passHref>
-                      <Link>{it.labelB}</Link>
-                    </NextLink>
-                  </MenuItem>
-                ))}
-              </MenuList>
-            </Menu>
-          ))}
-          {navItems.people.map((item, index) => (
-            <Menu key={index} isLazy size='md'>
-              <MenuButton
-                as={Button}
-                rightIcon={<RiArrowDropDownLine />}
-                variant='unstyled'
-              >
-                {item.name}
-              </MenuButton>
-              <MenuList sx={menuColor}>
-                <MenuItem>
-                  <NextLink href={`/person/${item.href}`} passHref>
-                    <Link>{item.label}</Link>
-                  </NextLink>
-                </MenuItem>
-              </MenuList>
-            </Menu>
-          ))}
-        </HStack>
-        <HStack
-          spacing={4}
-          justify='flex-end'
-          display={{ base: 'none', md: 'flex' }}
-        >
-          {!user && (
-            <Box as={handleNavText} name='Join Tubine' href='/getstarted' />
-          )}
-          {user && (
-            <Menu isLazy size='md'>
-              <MenuButton
-                as={Button}
-                rightIcon={<RiArrowDropDownLine />}
-                variant='unstyled'
-              >
-                Welcome,&nbsp;{username}
-              </MenuButton>
-              <MenuList sx={menuColor}>
-                <MenuItem>
-                  <NextLink href={`/profile`} passHref>
-                    <Link>Profile</Link>
-                  </NextLink>
-                </MenuItem>
-                <MenuItem>
-                  <Text onClick={logout}>Logout</Text>
-                </MenuItem>
-              </MenuList>
-            </Menu>
-          )}
-        </HStack>
-        <Box onClick={() => setShowSearch(!showSearch)}>
-          {showSearch ? (
-            <IconButton
-              variant='unstyled'
-              aria-label='open menu'
-              icon={<RiCloseLine />}
-              fontSize='xl'
-              onClick={closeSearchBox}
-            />
-          ) : (
-            <IconButton
-              icon={<FiSearch />}
-              fontSize='xl'
+        </NextLink> */}
+        <HStack spacing={10}>
+          <NextLink href='/' passHref>
+            <Heading
+              size={{ base: 'md', md: 'sm', lg: 'lg' }}
+              justify='flex-start'
               cursor='pointer'
-              aria-label='Search-button'
-              variant='unstyled'
-              color='teal.200'
-              onClick={closeSearchBox}
-            />
-          )}
-        </Box>
+            >
+              TUBINE DB
+            </Heading>
+          </NextLink>
+          <HStack spacing={4} display={{ base: 'none', md: 'flex' }}>
+            {navItems.movies.map((item, index) => (
+              <Menu key={index} isLazy size='md'>
+                <MenuButton
+                  as={Button}
+                  rightIcon={<RiArrowDropDownLine />}
+                  variant='unstyled'
+                >
+                  {item.label}
+                </MenuButton>
+                <MenuList sx={menuColor}>
+                  {item.href.map((it, index) => (
+                    <MenuItem key={index}>
+                      <NextLink href={`/movie/${it.linkA}`} passHref>
+                        <Link>{it.labelA}</Link>
+                      </NextLink>
+                      <NextLink href={`/movie/${it.linkB}`} passHref>
+                        <Link>{it.labelB}</Link>
+                      </NextLink>
+                    </MenuItem>
+                  ))}
+                </MenuList>
+              </Menu>
+            ))}
+            {navItems.shows.map((item, index) => (
+              <Menu key={index} isLazy size='md'>
+                <MenuButton
+                  as={Button}
+                  rightIcon={<RiArrowDropDownLine />}
+                  variant='unstyled'
+                >
+                  {item.label}
+                </MenuButton>
+                <MenuList sx={menuColor}>
+                  {item.href.map((it, index) => (
+                    <MenuItem key={index}>
+                      <NextLink href={`/tv/${it.linkA}`} passHref>
+                        <Link>{it.labelA}</Link>
+                      </NextLink>
+                      <NextLink href={`/tv/${it.linkB}`} passHref>
+                        <Link>{it.labelB}</Link>
+                      </NextLink>
+                    </MenuItem>
+                  ))}
+                </MenuList>
+              </Menu>
+            ))}
+            {navItems.people.map((item, index) => (
+              <Menu key={index} isLazy size='md'>
+                <MenuButton
+                  as={Button}
+                  rightIcon={<RiArrowDropDownLine />}
+                  variant='unstyled'
+                >
+                  {item.name}
+                </MenuButton>
+                <MenuList sx={menuColor}>
+                  <MenuItem>
+                    <NextLink href={`/person/${item.href}`} passHref>
+                      <Link>{item.label}</Link>
+                    </NextLink>
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+            ))}
+          </HStack>
+        </HStack>
+        <HStack spacing={8}>
+          <HStack spacing={1} display={{ base: 'none', md: 'flex' }}>
+            {!user && (
+              <Box as={handleNavText} name='Join Tubine' href='/getstarted' />
+            )}
+            {user && (
+              <Menu isLazy size='md'>
+                <MenuButton
+                  as={Button}
+                  rightIcon={<RiArrowDropDownLine />}
+                  variant='unstyled'
+                >
+                  Welcome,&nbsp;{username}
+                </MenuButton>
+                <MenuList sx={menuColor}>
+                  <MenuItem>
+                    <NextLink href={`/profile`} passHref>
+                      <Link>Profile</Link>
+                    </NextLink>
+                  </MenuItem>
+                  <MenuItem>
+                    <Text onClick={logout}>Logout</Text>
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+            )}
+          </HStack>
+
+          <Box onClick={() => setShowSearch(!showSearch)}>
+            {showSearch ? (
+              <IconButton
+                variant='unstyled'
+                aria-label='open menu'
+                icon={<RiCloseLine />}
+                fontSize='xl'
+                onClick={closeSearchBox}
+              />
+            ) : (
+              <IconButton
+                icon={<FiSearch />}
+                fontSize='xl'
+                cursor='pointer'
+                aria-label='Search-button'
+                variant='unstyled'
+                color='teal.200'
+                onClick={closeSearchBox}
+              />
+            )}
+          </Box>
+        </HStack>
       </Flex>
       {showSide && <Sidebar showSide={showSide} setShowSide={setShowSide} />}
       {visible && (

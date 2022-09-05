@@ -35,7 +35,7 @@ export default function PersonId({ person }) {
     <>
       <Head>
         <title>{person.name} Details</title>
-        <meta name='description' content={`${person.name} information`} />
+        <meta name='description' content='Person information'/>
       </Head>
       <Box maxW='container.xl' mx='auto' py='4rem'>
         <Flex

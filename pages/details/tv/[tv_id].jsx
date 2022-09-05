@@ -97,8 +97,7 @@ export default function TvId({ tv }) {
             </Box>
             <Box maxW='container.xl' mx='auto'>
               <Flex
-                justify='space-between'
-                gap={{ base: 10, md: 20 }}
+                gap={10}
                 px={4}
                 pos='absolute'
                 top='10%'
@@ -118,7 +117,7 @@ export default function TvId({ tv }) {
                     height='100%'
                   />
                 </Flex>
-                <Box color='#fff' w={{ base: '90vw', md: '53vw', lg: '60vw' }}>
+                <Box color='#fff' w={{ base: '90vw', md: '55vw', lg: '60vw' }}>
                   <HStack spacing={2} justify={{ base: 'center', md: 'start' }}>
                     <Heading as='h2' size={{ base: 'sm', md: 'md', lg: 'lg' }}>
                       {tv?.name}
@@ -149,7 +148,7 @@ export default function TvId({ tv }) {
                       <Flex gap={1} align='center'>
                         <Icon as={AiFillStar} color='yellow' fontSize='25px' />
                         <Text fontSize='20px'>
-                          {`${tv?.vote_average.toFixed(2)}/10`}
+                          {`${tv?.vote_average?.toFixed(2)}/10`}
                         </Text>
                       </Flex>
                       <Box onClick={savedShow}>
@@ -177,20 +176,20 @@ export default function TvId({ tv }) {
                       </Text>
                     </Box>
                     <Flex justify='space-between' w='full' flexWrap='wrap'>
-                      {credits.slice(0, 2).map((item, index) => (
+                      {credits?.slice(0, 2).map((item, index) => (
                         <VStack spacing={2} key={index} align='start'>
                           <Text mt={2} fontWeight='bold'>
-                            {item.name}
+                            {item?.name}
                           </Text>
                           <Text mt={2}>{item.job}</Text>
                         </VStack>
                       ))}
-                      {writer.slice(0, 1).map((item, index) => (
+                      {writer?.slice(0, 1).map((item, index) => (
                         <VStack spacing={2} key={index} align='start'>
                           <Text mt={2} fontWeight='bold'>
-                            {item.name}
+                            {item?.name}
                           </Text>
-                          <Text mt={2}>{item.department}</Text>
+                          <Text mt={2}>{item?.department}</Text>
                         </VStack>
                       ))}
                     </Flex>
@@ -203,8 +202,7 @@ export default function TvId({ tv }) {
       </Box>
       <Flex
         p={4}
-        justify='space-between'
-        gap={[10, 20]}
+        gap={20}
         mt='2rem'
         maxW='container.xl'
         mx='auto'
@@ -272,7 +270,7 @@ export default function TvId({ tv }) {
             <Heading as='h2' size='sm' mb={4}>
               Reviews
             </Heading>
-            {tv?.reviews?.results.length > 0 ? (
+            {tv?.reviews?.results?.length > 0 ? (
               <Box rounded='xl' shadow='lg'>
                 {tv?.reviews?.results?.slice(0, 3).map((item, id) => (
                   <Flex
@@ -286,7 +284,7 @@ export default function TvId({ tv }) {
                     <Avatar
                       src={`https://image.tmdb.org/t/p/original/${item?.author_details.avatar_path}`}
                       size='lg'
-                      name={item?.author_details.name}
+                      name={item?.author_details?.name}
                     />
                     <Box>
                       <Text fontWeight='bold'>{item?.author}</Text>

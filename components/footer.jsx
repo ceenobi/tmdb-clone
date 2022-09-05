@@ -23,7 +23,7 @@ export default function Footer() {
             direction='row'
             spacing={3}
             fontSize='xs'
-            mb={4}
+            mb={2}
             flexWrap='wrap'
             align='center'
           >
@@ -49,7 +49,7 @@ export default function Footer() {
               PRIVACY
             </Text>
           </Stack>
-          <Stack direction='row' spacing={3} mb={4} align='center'>
+          <Stack direction='row' spacing={3} mb={2} align='center'>
             <Icon
               as={RiTwitterLine}
               fontSize='20px'

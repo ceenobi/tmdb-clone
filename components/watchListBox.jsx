@@ -11,7 +11,6 @@ export default function WatchListBox({item, deleteShow}) {
       w={{ base: '90vw' }}
       shadow='lg'
       mb={4}
-      border='.5px solid #fff'
       h='180px'
       align='center'
     >
