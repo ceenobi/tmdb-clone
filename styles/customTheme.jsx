@@ -53,7 +53,7 @@ const theme = extendTheme(
           color: props.colorMode === 'dark' ? 'white' : 'black',
           px: '10px',
           border:
-            props.colorMode === 'dark' ? '1px solid white' : '1px solid black',
+            props.colorMode === 'dark' ? '.5px solid white' : '1.5px solid black',
         },
         '.prev .next': {
           borderRadius: '6px',
@@ -71,7 +71,6 @@ const theme = extendTheme(
         },
         a: {
           textDecoration: 'none',
-          //color: props.colorMode === 'dark' ? 'teal.300' : 'teal.500',
         },
       }),
     },

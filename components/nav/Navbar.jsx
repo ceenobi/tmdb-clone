@@ -122,15 +122,6 @@ export default function Navbar() {
             />
           )}
         </Box>
-        {/* <NextLink href='/' passHref>
-          <Heading
-            size={{ base: 'md', md: 'sm', lg: 'lg' }}
-            justify='flex-start'
-            cursor='pointer'
-          >
-            TUBINE DB
-          </Heading>
-        </NextLink> */}
         <HStack spacing={10}>
           <NextLink href='/' passHref>
             <Heading

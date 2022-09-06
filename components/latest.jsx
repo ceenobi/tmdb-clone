@@ -16,7 +16,10 @@ export default function Latest({ upcoming, onAir }) {
 
   return (
     <Box maxW='container.xl' m='auto' px={{ base: '4', md: '10' }} mt='2rem'>
-      <Flex gap={{ base: '3', md: '4' }} align='center'>
+      <Flex
+        gap='3rem'
+        align='center'
+      >
         <Heading as='h2' size={{ base: 'sm', md: 'md' }}>
           Trending
         </Heading>

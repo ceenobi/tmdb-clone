@@ -18,12 +18,12 @@ const Search = (props) => {
   let keyword = router.query['query']
 
   const filteredData = props.search.filter((res) => {
-     const filter = res.title || res.name === keyword
-     if (keyword === '') {
-       return res
-     } else {
-       return res.title || res.name || filter
-     }
+    const filter = res.title || res.name === keyword
+    if (keyword === '') {
+      return res
+    } else {
+      return res.title || res.name || filter
+    }
   })
 
   useEffect(() => {
@@ -36,8 +36,9 @@ const Search = (props) => {
     }
   }, [])
 
-  const movieTotal = filteredData?.filter((item) => item.media_type === 'movie')
-  const tvTotal = filteredData?.filter((item) => item.media_type === 'tv')
+  const movieTotal = props.search?.filter((item) => item.media_type === 'movie')
+  const tvTotal = props.search?.filter((item) => item.media_type === 'tv')
+  const allTotal = props.search?.filter((item) => item)
 
   const arrayOfMovieKeys = Object.keys(movieTotal)
   const arrayOfMovieData = Object.keys(movieTotal).map((key) => movieTotal[key])
@@ -57,22 +58,22 @@ const Search = (props) => {
     formattedTvArray.push(formmatedData)
   })
 
-  const filterByMovie = () => {
-    var updatedList = [...filteredData]
-    updatedList = updatedList.filter((item) => {
-      return item.media_type === 'movie'
-    })
-    setFilteredList(updatedList)
-  }
-  const filterByTv = () => {
-    var updatedList = [...filteredData]
-    updatedList = updatedList.filter((item) => {
-      return item.media_type === 'tv'
-    })
-    setFilteredList(updatedList)
-  }
+  // const filterByMovie = () => {
+  //   var updatedList = [...props.search]
+  //   updatedList = updatedList.filter((item) => {
+  //     return item.media_type === 'movie'
+  //   })
+  //   setFilteredList(updatedList)
+  // }
+  // const filterByTv = () => {
+  //   var updatedList = [...props.search]
+  //   updatedList = updatedList.filter((item) => {
+  //     return item.media_type === 'tv'
+  //   })
+  //   setFilteredList(updatedList)
+  // }
 
-  if (keyword && filteredList?.length === 0) {
+  if (keyword && props.search?.length === 0) {
     return (
       <Flex justify='center' py='5rem' m='auto'>
         <Text as='h2' fontSize='lg'>
@@ -96,7 +97,7 @@ const Search = (props) => {
   let content = null
   if (isLoading)
     content = (
-      <Flex justify='center' h='100vh' w='full' m='auto' align='center'>
+      <Flex justify='center' mx='auto'>
         <Loader />
       </Flex>
     )
@@ -156,7 +157,7 @@ const Search = (props) => {
                   gap={3}
                   cursor='pointer'
                   align='center'
-                  onClick={filterByMovie}
+                  onClick={() => setFilteredList(movieTotal)}
                 >
                   <Text>Movies</Text>
                   <Button variant='solid' size='sm'>
@@ -167,7 +168,7 @@ const Search = (props) => {
                   gap={3}
                   cursor='pointer'
                   align='center'
-                  onClick={filterByTv}
+                  onClick={() => setFilteredList(tvTotal)}
                 >
                   <Text>Tv</Text>
                   <Button variant='solid' size='sm'>
@@ -212,7 +213,6 @@ export async function getServerSideProps(context) {
     const page = context.query.page || 1
     const queryTerm = context.query['query']
     const search = await getSearchDetails(queryTerm, page)
-    // console.log(search.results)
     return {
       props: {
         search: search.results,

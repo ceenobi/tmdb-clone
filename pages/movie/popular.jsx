@@ -104,7 +104,7 @@ const Popular = (props) => {
         <title>Popular Movies</title>
         <meta name='description' content='List of popuplar movies' />
       </Head>
-      <Box maxW='container.xl' mx='auto' py='2rem' px={{ base: '4', lg: '10' }}>
+      <Box maxW='container.xl' mx='auto' py='2rem' px={{ base: '4', md: '10' }}>
         <Flex
           justify='space-between'
           direction={{ base: 'column', md: 'row' }}

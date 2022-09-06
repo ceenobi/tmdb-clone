@@ -116,6 +116,7 @@ export default function PosterBox({ item }) {
               w='full'
               mb={0}
               onClick={savedShow}
+              color='blackAlpha.900'
             >
               {like ? 'Saved' : 'Add to watchlist'}
             </Text>

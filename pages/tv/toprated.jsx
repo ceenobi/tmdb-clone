@@ -109,7 +109,7 @@ const TopRated = (props) => {
         <title>Top Rated Shows</title>
         <meta name='description' content='List of top rated shows' />
       </Head>
-      <Box maxW='container.xl' mx='auto' py='2rem' px={{ base: '4', lg: '10' }}>
+      <Box maxW='container.xl' mx='auto' py='2rem' px={{ base: '4', md: '10' }}>
         <Flex
           justify='space-between'
           direction={{ base: 'column', md: 'row' }}
@@ -119,7 +119,7 @@ const TopRated = (props) => {
           <Heading as='h2' size={{ base: 'sm', md: 'md' }} mb={3}>
             Top Rated Shows
           </Heading>
-          <Box w={{ base: '100%', md: '250px' }}>
+          <Box w={{ base: '100%', md: '220px' }}>
             Sort results by:
             <Select
               rounded='none'

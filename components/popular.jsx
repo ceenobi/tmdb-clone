@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Box, Heading, Flex, Stack, Button } from '@chakra-ui/react'
+import { Box, Heading, Flex, Stack, Button, HStack } from '@chakra-ui/react'
 import { PosterBox } from '../components'
 
 export default function Popular({ trending, trendShow }) {
@@ -17,7 +17,7 @@ export default function Popular({ trending, trendShow }) {
 
   return (
     <Box maxW='container.xl' m='auto' px={{ base: '4', md: '10' }} mt='2rem'>
-      <Flex gap={4} align='center'>
+      <Flex gap='3rem' align='center'>
         <Heading as='h2' size={{ base: 'sm', md: 'md' }}>
           {"What's"} Popular
         </Heading>
