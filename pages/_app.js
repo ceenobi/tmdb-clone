@@ -2,7 +2,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import NProgress from 'nprogress'
 import Router from 'next/router'
 
-import { Layout } from '../components'
+import { Layout, ErrorBoundary } from '../components'
 import theme from '../styles/customTheme'
 import { AuthContextProvider } from '../lib/context'
 
@@ -18,11 +18,13 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
 
   return (
     <ChakraProvider theme={theme}>
-      <AuthContextProvider>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-      </AuthContextProvider>
+      <ErrorBoundary FallbackComponent={<h2>There was an error</h2>}>
+        <AuthContextProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </AuthContextProvider>
+      </ErrorBoundary>
     </ChakraProvider>
   )
 }
