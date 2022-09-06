@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { ScaleFade, Box, Flex, Text, Button, Stack } from '@chakra-ui/react'
+import { Box, Flex, Text, Button, Stack } from '@chakra-ui/react'
 import Head from 'next/head'
 import ReactPaginate from 'react-paginate'
 import Router, { withRouter, useRouter } from 'next/router'

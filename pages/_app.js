@@ -6,9 +6,8 @@ import { Layout } from '../components'
 import theme from '../styles/customTheme'
 import { AuthContextProvider } from '../lib/context'
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   NProgress.configure({ showSpinner: false })
-
   Router.events.on('routeChangeStart', () => {
     NProgress.start()
   })
@@ -20,12 +19,15 @@ function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
       <AuthContextProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
       </AuthContextProvider>
     </ChakraProvider>
   )
 }
 
 export default MyApp
+
+
+

@@ -15,6 +15,7 @@ import { useRouter } from 'next/router'
 
 import registerOptions from '../lib/inputValidation'
 import { AuthService } from '../lib/context'
+import {Layout} from '../components'
 
 export default function Resetpassword() {
   const { resetPassword, isSubmitting } = AuthService()
@@ -100,3 +101,5 @@ export default function Resetpassword() {
     </>
   )
 }
+
+Resetpassword.Layout = Layout

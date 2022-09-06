@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { useAuthState } from 'react-firebase-hooks/auth'
 
 import { AccordionSidebar } from '../../components'
-import { AuthService } from '../../lib/context'
 import { auth } from '../../firebase'
 
 export default function Sidebar({ showSide, setShowSide }) {

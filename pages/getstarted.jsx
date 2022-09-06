@@ -10,7 +10,6 @@ import {
   Input,
   Button,
   Link,
-  ScaleFade
 } from '@chakra-ui/react'
 import { useForm, FormProvider } from 'react-hook-form'
 import Head from 'next/head'
@@ -22,6 +21,7 @@ import registerOptions from '../lib/inputValidation'
 import { AuthService } from '../lib/context'
 import Loader from '../lib/loader'
 import { auth } from '../firebase'
+import {Layout} from '../components'
 
 export default function GetStarted() {
   const [isSignup, setIsSignup] = useState(false)
@@ -36,7 +36,7 @@ export default function GetStarted() {
 
   useEffect(() => {
     if (loading) {
-      ;<Loader />
+      <Loader />
     }
     if (user) router.push('/')
   }, [user, loading, router])
@@ -57,7 +57,6 @@ export default function GetStarted() {
   const handleError = (errors) => {}
 
   const onSubmit = (data) => {
-    console.log(data)
     if (isSignup) {
       registerWithEmailAndPassword(data.username, data.email, data.password)
     } else {
@@ -178,3 +177,5 @@ export default function GetStarted() {
     </>
   )
 }
+
+GetStarted.Layout = Layout

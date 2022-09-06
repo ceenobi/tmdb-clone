@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import { Box, Heading, Flex, Text } from '@chakra-ui/react'
@@ -6,25 +6,47 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { useRouter } from 'next/router'
 
 import { AuthService } from '../lib/context'
-import { WatchListBox } from '../components'
+import { WatchListBox, Layout } from '../components'
 import { useToastHook } from '../hooks/useToast'
 import Loader from '../lib/loader'
 
 export default function Profile() {
+  const [loading, setLoading] = useState(false)
   const [handleToast] = useToastHook()
-  const { db, updateDoc, auth, watchlist, username, doc } = AuthService()
-  const [user, error, loading] = useAuthState(auth)
+  const { db, updateDoc, auth, watchlist, username, doc, fetchUserName } =
+    AuthService()
+  const [user, error] = useAuthState(auth)
   const router = useRouter()
 
   useEffect(() => {
-    user ? router.push('/profile') : router.push('/')
+    if (user) {
+      ;({ redirectTo: '/profile' })
+    } else {
+      router.push('/')
+    }
   }, [user, router])
+
+  useEffect(() => {
+    if (loading) return
+    if (user) {
+      fetchUserName()
+    }
+  }, [user, fetchUserName, loading])
+
+  if (!user || user.isLoggedIn === false) {
+    return (
+      <Flex justify='center' px={4}>
+        <Loader />
+      </Flex>
+    )
+  }
 
   if (error) console.log(error)
 
   const showRef = doc(db, 'users', `${user?.email}`)
 
   const deleteShow = async (passedID) => {
+    setLoading(true)
     try {
       const res = watchlist?.filter((item) => item.id !== passedID)
       await updateDoc(showRef, {
@@ -36,6 +58,7 @@ export default function Profile() {
         status: 'warning',
       })
     }
+    setLoading(false)
   }
 
   return (
@@ -103,8 +126,8 @@ export default function Profile() {
           <Text fontSize='xl' fontWeight='bold'>
             Your watchlist
           </Text>
-          {loading && <Loader />}
           <Flex align='center' py={4}>
+            {loading && <Loader />}
             <Box>
               {watchlist?.map((item, index) => (
                 <WatchListBox item={item} key={index} deleteShow={deleteShow} />
@@ -116,3 +139,5 @@ export default function Profile() {
     </>
   )
 }
+
+Profile.Layout = Layout

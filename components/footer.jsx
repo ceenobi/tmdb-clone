@@ -10,7 +10,7 @@ export default function Footer() {
     },
   }
   return (
-    <Box bg='blackAlpha.900' py={5} px={1} h='10rem'>
+    <Box bg='blackAlpha.900' py={6} px={1} h='10rem'>
       <Container maxW='container.xl'>
         <Flex
           justify='space-between'
@@ -23,7 +23,6 @@ export default function Footer() {
             direction='row'
             spacing={3}
             fontSize='xs'
-            mb={2}
             flexWrap='wrap'
             align='center'
           >
@@ -49,7 +48,7 @@ export default function Footer() {
               PRIVACY
             </Text>
           </Stack>
-          <Stack direction='row' spacing={3} mb={2} align='center'>
+          <Stack direction='row' spacing={3} align='center'>
             <Icon
               as={RiTwitterLine}
               fontSize='20px'

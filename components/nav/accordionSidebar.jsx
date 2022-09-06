@@ -28,6 +28,11 @@ export default function AccordionSidebar({ onClose }) {
     }
   }, [user, fetchUserName, loading])
 
+  const signOut = () => {
+    logout() 
+    onClose()
+  }
+
   return (
     <>
       <Accordion allowToggle borderColor='transparent' w='250px'>
@@ -50,7 +55,7 @@ export default function AccordionSidebar({ onClose }) {
                     <NextLink href='/profile' passHref>
                       <Link onClick={onClose}>Profile</Link>
                     </NextLink>
-                    <Text onClick={logout}>Logout</Text>
+                    <Text onClick={signOut}>Logout</Text>
                   </VStack>
                 </AccordionPanel>
               </>
