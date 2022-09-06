@@ -17,7 +17,7 @@ export default function Popular({ trending, trendShow }) {
 
   return (
     <Box maxW='container.xl' m='auto' px={4} mt='2rem'>
-      <Stack spacing='3rem' align='center'>
+      <Stack spacing='3rem' align='center' direction='row'>
         <Heading as='h2' size={{ base: 'sm', md: 'md' }}>
           {"What's"} Popular
         </Heading>

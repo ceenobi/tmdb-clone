@@ -125,6 +125,7 @@ export default function PersonId({ person }) {
                 as='h2'
                 size={{ base: 'md', md: 'lg' }}
                 display={{ base: 'none', md: 'block' }}
+                mb={3}
               >
                 {person?.name}
               </Heading>
