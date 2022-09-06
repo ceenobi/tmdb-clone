@@ -44,7 +44,7 @@ const theme = extendTheme(
         },
         '.pagination': {
           display: 'flex',
-          gap: '20px',
+          gap: '10px',
           p: '5px',
           listStyleType: 'none',
         },
@@ -53,7 +53,9 @@ const theme = extendTheme(
           color: props.colorMode === 'dark' ? 'white' : 'black',
           px: '10px',
           border:
-            props.colorMode === 'dark' ? '.5px solid white' : '1.5px solid black',
+            props.colorMode === 'dark'
+              ? '.5px solid white'
+              : '1.5px solid black',
         },
         '.prev .next': {
           borderRadius: '6px',
@@ -64,7 +66,7 @@ const theme = extendTheme(
           opacity: '0.2',
         },
         '.break-me': {
-          px: '10px',
+          px: '20px',
         },
         '.viewBox': {
           minHeight: 'calc(100vh - 10rem)',

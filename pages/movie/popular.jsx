@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Box, Flex, Grid, Heading, Select } from '@chakra-ui/react'
+import { Box, Flex, Grid, Heading, Select} from '@chakra-ui/react'
 import Head from 'next/head'
 import ReactPaginate from 'react-paginate'
 import Router, { withRouter } from 'next/router'
@@ -104,7 +104,7 @@ const Popular = (props) => {
         <title>Popular Movies</title>
         <meta name='description' content='List of popuplar movies' />
       </Head>
-      <Box maxW='container.xl' mx='auto' py='2rem' px={{ base: '4', md: '10' }}>
+      <Box maxW='container.xl' mx='auto' py='2rem' px={4}>
         <Flex
           justify='space-between'
           direction={{ base: 'column', md: 'row' }}

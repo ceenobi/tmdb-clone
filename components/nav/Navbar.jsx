@@ -100,7 +100,7 @@ export default function Navbar() {
         align='center'
         justify='space-between'
         h='16'
-        px={{ base: '4', md: '10' }}
+        px={4}
       >
         <Box
           onClick={() => setShowSide(!showSide)}

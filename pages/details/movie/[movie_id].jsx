@@ -12,6 +12,7 @@ import {
   Img,
   Button,
   Link,
+  IconButton,
 } from '@chakra-ui/react'
 import { AiFillStar } from 'react-icons/ai'
 import { FiLink } from 'react-icons/fi'
@@ -20,11 +21,13 @@ import Head from 'next/head'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { AiOutlineUnorderedList } from 'react-icons/ai'
 import { VscTasklist } from 'react-icons/vsc'
+import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io'
 
 import { getMovieDetails } from '../../api/tubine.server'
 import { PosterBox, Layout } from '../../../components'
 import { AuthService } from '../../../lib/context'
 import { useToastHook } from '../../../hooks/useToast'
+import useScroll from '../../../hooks/useScroll'
 
 export default function MovieId({ movie }) {
   const [showMore, setShowMore] = useState(false)
@@ -33,6 +36,7 @@ export default function MovieId({ movie }) {
   const { db, arrayUnion, updateDoc, auth, doc } = AuthService()
   const [user] = useAuthState(auth)
   const [handleToast] = useToastHook()
+  const [scroll, scrollRef] = useScroll()
 
   const movieID = doc(db, 'users', `${user?.email}`)
 
@@ -207,7 +211,7 @@ export default function MovieId({ movie }) {
         </Box>
       </Box>
       <Stack
-        p={{ base: '4', md: '10' }}
+        p={4}
         spacing='4rem'
         mt='2rem'
         maxW='container.xl'
@@ -250,10 +254,10 @@ export default function MovieId({ movie }) {
             {movie?.reviews?.results.length > 0 ? (
               <Box rounded='xl' shadow='lg'>
                 {movie?.reviews?.results?.slice(0, 3).map((item, id) => (
-                  <Flex
+                  <Stack
                     mb={4}
                     p={4}
-                    gap='20px'
+                    spacing='20px'
                     key={id}
                     direction={{ base: 'column', md: 'row' }}
                   >
@@ -268,7 +272,7 @@ export default function MovieId({ movie }) {
                         {' '}
                         {showMore
                           ? item?.content
-                          : `${item?.content.substring(0, 300)}` + '...'}
+                          : `${item?.content?.substring(0, 300)}` + '...'}
                       </Text>
                       <Button
                         variant='unstyled'
@@ -278,7 +282,7 @@ export default function MovieId({ movie }) {
                         {showMore ? 'Show less' : 'Show more'}
                       </Button>
                     </Box>
-                  </Flex>
+                  </Stack>
                 ))}
               </Box>
             ) : (
@@ -318,12 +322,12 @@ export default function MovieId({ movie }) {
           </VStack>
         </Box>
       </Stack>
-      <Box maxW='container.xl' p={{ base: '4', md: '10' }} mx='auto'>
+      <Box maxW='container.xl' p={4} mx='auto'>
         <Box mt={8}>
           <Heading as='h2' size='sm' mb={4}>
             Recommendations
           </Heading>
-          <Flex align='center'>
+          <Flex align='center' pos='relative'>
             {movie?.recommendations?.results.length > 0 ? (
               <>
                 <Flex
@@ -331,10 +335,39 @@ export default function MovieId({ movie }) {
                   flexWrap='nowrap'
                   scroll='smooth'
                   scrollbar='hide'
+                  ref={scrollRef}
+                  mb={6}
                 >
                   {movie?.recommendations?.results?.map((item, id) => (
                     <PosterBox item={item} key={id} />
                   ))}
+                </Flex>
+                <Flex
+                  display={{ base: 'none', lg: 'block' }}
+                  position='absolute'
+                  bottom='0'
+                  w='100%'
+                >
+                  <Flex justify='flex-end' gap='20px'>
+                    <IconButton
+                      icon={<IoIosArrowBack />}
+                      fontSize='2xl'
+                      cursor='pointer'
+                      aria-label='Scroll-button'
+                      onClick={() => scroll('left')}
+                      variant='unstyled'
+                      _hover={{ color: 'blue.200' }}
+                    />
+                    <IconButton
+                      icon={<IoIosArrowForward />}
+                      fontSize='2xl'
+                      cursor='pointer'
+                      aria-label='Scroll-button'
+                      onClick={() => scroll('right')}
+                      variant='unstyled'
+                      _hover={{ color: 'blue.200' }}
+                    />
+                  </Flex>
                 </Flex>
               </>
             ) : (

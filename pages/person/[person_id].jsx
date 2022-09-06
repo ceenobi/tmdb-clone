@@ -35,7 +35,7 @@ export default function PersonId({ person }) {
   return (
     <>
       <Head>
-        <title>{person.name} Details</title>
+        <title>{person?.name} Details</title>
         <meta name='description' content='Person information' />
       </Head>
       <Box maxW='container.xl' mx='auto' py='4rem'>
@@ -147,9 +147,7 @@ export default function PersonId({ person }) {
                   </Button>
                 )}
               </Box>
-              <Box
-               w='full'
-              >
+              <Box w='full'>
                 <Text fontWeight='bold'>Known for</Text>
                 <Flex align='center' py={4}>
                   <Flex

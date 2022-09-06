@@ -109,7 +109,7 @@ const TopRated = (props) => {
         <title>Top Rated Shows</title>
         <meta name='description' content='List of top rated shows' />
       </Head>
-      <Box maxW='container.xl' mx='auto' py='2rem' px={{ base: '4', md: '10' }}>
+      <Box maxW='container.xl' mx='auto' py='2rem' px={4}>
         <Flex
           justify='space-between'
           direction={{ base: 'column', md: 'row' }}

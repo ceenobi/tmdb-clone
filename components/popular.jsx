@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Box, Heading, Flex, Stack, Button, HStack } from '@chakra-ui/react'
+import { Box, Heading, Flex, Stack, Button} from '@chakra-ui/react'
 import { PosterBox } from '../components'
 
 export default function Popular({ trending, trendShow }) {
@@ -16,12 +16,12 @@ export default function Popular({ trending, trendShow }) {
   const isActive = activeBtn
 
   return (
-    <Box maxW='container.xl' m='auto' px={{ base: '4', md: '10' }} mt='2rem'>
-      <Flex gap='3rem' align='center'>
+    <Box maxW='container.xl' m='auto' px={4} mt='2rem'>
+      <Stack spacing='3rem' align='center'>
         <Heading as='h2' size={{ base: 'sm', md: 'md' }}>
           {"What's"} Popular
         </Heading>
-        <Stack spacing='15px' direction='row' align='center'>
+        <Stack spacing={4} direction='row' align='center'>
           <Button
             fontWeight='bold'
             onClick={() => setActiveBtn(true)}
@@ -38,7 +38,7 @@ export default function Popular({ trending, trendShow }) {
             On Tv
           </Button>
         </Stack>
-      </Flex>
+      </Stack>
       <Flex align='center' py={4}>
         <Flex
           overflowX='auto'

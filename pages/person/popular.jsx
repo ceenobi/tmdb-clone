@@ -88,15 +88,10 @@ const Popular = (props) => {
         <title>Popular People</title>
         <meta name='description' content='List of Popular people' />
       </Head>
-      <Box maxW='container.xl' mx='auto' py='2rem'>
-        <Flex
-          direction={{ base: 'column', md: 'row' }}
-          mb={4}
-          px={4}
-          align='center'
-        >
+      <Box maxW='container.xl' mx='auto' py='2rem' px={4}>
+        <Flex direction={{ base: 'column', md: 'row' }} mb={4} align='center'>
           <Heading as='h2' size={{ base: 'sm', md: 'md' }} mb={3}>
-            Popular people 
+            Popular people
           </Heading>
         </Flex>
         <Box>

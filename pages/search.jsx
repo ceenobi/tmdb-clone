@@ -38,7 +38,7 @@ const Search = (props) => {
 
   const movieTotal = props.search?.filter((item) => item.media_type === 'movie')
   const tvTotal = props.search?.filter((item) => item.media_type === 'tv')
-  const allTotal = props.search?.filter((item) => item)
+  //const allTotal = props.search?.filter((item) => item)
 
   const arrayOfMovieKeys = Object.keys(movieTotal)
   const arrayOfMovieData = Object.keys(movieTotal).map((key) => movieTotal[key])
@@ -121,7 +121,6 @@ const Search = (props) => {
         <title>{keyword} Results</title>
         <meta name='description' content='Search Results' />
       </Head>
-      <ScaleFade initialScale={0.9} in='true'>
         <Box maxW='container.xl' mx='auto' py='2rem'>
           <Flex
             justify='space-between'
@@ -199,7 +198,6 @@ const Search = (props) => {
             renderOnZeroPageCount={null}
           />
         </Flex>
-      </ScaleFade>
     </>
   )
 }

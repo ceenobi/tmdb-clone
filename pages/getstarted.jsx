@@ -75,7 +75,6 @@ export default function GetStarted() {
         <title>Join Tubine</title>
         <meta name='description' content='User Register or Login page' />
       </Head>
-      <ScaleFade initialScale={0.9} in='true'>
         <Box maxW='container.xl' mx='auto' py='2rem'>
           <Box
             align='center'
@@ -176,7 +175,6 @@ export default function GetStarted() {
             </chakra.form>
           </Box>
         </Box>
-      </ScaleFade>
     </>
   )
 }

@@ -104,7 +104,7 @@ const NowPlaying = (props) => {
         <title>Now Playing Movies</title>
         <meta name='description' content='List of now playing movies' />
       </Head>
-      <Box maxW='container.xl' mx='auto' py='2rem' px={{ base: '4', md: '10' }}>
+      <Box maxW='container.xl' mx='auto' py='2rem' px={4}>
         <Flex
           justify='space-between'
           direction={{ base: 'column', md: 'row' }}

@@ -15,15 +15,15 @@ export default function Latest({ upcoming, onAir }) {
   const isActive = activeBtn
 
   return (
-    <Box maxW='container.xl' m='auto' px={{ base: '4', md: '10' }} mt='2rem'>
-      <Flex
-        gap='3rem'
+    <Box maxW='container.xl' m='auto' px={4} mt='2rem'>
+      <Stack
+        spacing='3rem'
         align='center'
       >
         <Heading as='h2' size={{ base: 'sm', md: 'md' }}>
           Trending
         </Heading>
-        <Stack spacing='15px' direction='row' align='center'>
+        <Stack spacing={4} direction='row' align='center'>
           <Button
             fontWeight='bold'
             onClick={() => setActiveBtn(true)}
@@ -40,7 +40,7 @@ export default function Latest({ upcoming, onAir }) {
             On Air
           </Button>
         </Stack>
-      </Flex>
+      </Stack>
       <Flex align='center' py={4}>
         <Flex
           overflowX='auto'
